@@ -9,8 +9,9 @@ const Admin = () => {
 <SafeAreaView className='flex-1 bg-mybg'>
   <View>
 
-    <Image
+    <ImageBackground
     source={imgUrl}
+    className=''
     />
    
     <Text className='text-center text-white'>Hello Admin</Text>
