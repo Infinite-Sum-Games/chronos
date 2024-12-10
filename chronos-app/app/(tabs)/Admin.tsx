@@ -2,7 +2,7 @@ import '../../global.css';
 import { View, Text, ImageBackground } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import CustomButtons from '@/components/AdminComponents/CustomButtons';
 const imgUrl = require('../../assets/images/adminbg2.jpg');
 
 const Admin = () => {
@@ -22,7 +22,21 @@ const Admin = () => {
           </Text>
         </ImageBackground>
       </View>
-      <View className="flex-1 justify-center items-center">
+      <View className='flex-1 flex-col justify-center h-1/4'>
+        <View className='flex flex-row justify-between'>
+          <CustomButtons title={"Add Activity"}  />
+          <CustomButtons title={"Add Activity"} />
+          <CustomButtons title={"Add Activity"} />
+          <CustomButtons  title={"Add Activity"}/>
+        </View>
+        <View className='flex flex-row justify-between'>
+          <CustomButtons title={"Add Activity"} />
+          <CustomButtons  title={"Add Activity"}/>
+          <CustomButtons  title={"Add Activity"}/>
+          <CustomButtons  title={"Add Activity"}/>
+        </View>
+      </View>
+      <View className="flex-1">
         <Text className="text-white text-lg">More Content Here</Text>
       </View>
     </SafeAreaView>
