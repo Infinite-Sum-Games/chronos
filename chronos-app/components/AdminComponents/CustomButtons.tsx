@@ -8,8 +8,8 @@ interface CustomButtonsProps {
 }
 const CustomButtons: React.FC<CustomButtonsProps> = ({ title }) => {
   return (
-    <View className="flex justify-center items-center px-2 py-4">
-      <Pressable className="px-4 py-2 active:bg-gray-700 my-2 border border-white">
+    <View className="flex justify-center items-center px-3 py-5">
+      <Pressable className="py-2 active:bg-gray-700  ">
         <AntDesign name="swap" size={24} color="white" />
       </Pressable>
       <Text className="text-white font-bold">{title}</Text>
