@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 
-const ProgressBar = () => {
-  const progress = useRef(new Animated.Value(0)).current;
-  const [progressText, setProgressText] = useState(0);
-
+const ProgressBar = ({ start = 0, end = 100, duration = 2000, color = '#3ABEF9' }) => {
+  const progress = useRef(new Animated.Value(start)).current;
+  const [progressText, setProgressText] = useState(start);
   useEffect(() => {
-   
     Animated.timing(progress, {
-      toValue: 75,
-      duration: 2000,
+      toValue: end,
+      duration,
       useNativeDriver: false,
     }).start();
     const listener = progress.addListener(({ value }) => {
@@ -17,41 +15,57 @@ const ProgressBar = () => {
     });
 
     return () => {
-      progress.removeListener(listener); 
+      progress.removeListener(listener);
     };
-  }, [progress]);
+  }, [progress, end, duration]);
 
   const animatedWidth = progress.interpolate({
-    inputRange: [0, 100],
-    outputRange: ['0%', '100%'], 
+    inputRange: [start, end],
+    outputRange: ['0%', '70%'],
   });
-
   return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.bar, { width: animatedWidth }]} />
-      <Text style={styles.text}>{progressText}%</Text>
+    <View style={styles.wrapper}>
+        <View style={styles.container}>
+        <Animated.View style={[styles.bar, { width: animatedWidth, backgroundColor: color }]} />
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoText}>{start}%</Text>
+          <Text style={styles.infoText}>{progressText}%</Text>
+          <Text style={styles.infoText}>{end}%</Text>
+        </View>
+      </View>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
+  wrapper: {
+    alignItems: 'center',
+    margin: 20,
+  },
   container: {
-    height: 20,
-    backgroundColor: '#ccc',
-    borderRadius: 10,
+    width: '100%',
+    height: 25,
+    backgroundColor: '#E0E0E0',
+    borderRadius: 16,
     overflow: 'hidden',
-    margin: 10,
+    position: 'relative',
   },
   bar: {
-    height: 20,
-    backgroundColor: '#333',
-    borderRadius: 10,
+    height: '100%',
+    borderRadius: 15,
   },
-  text: {
-    textAlign: 'center',
-    marginTop: 10,
-    fontSize: 16,
-    fontWeight: 'bold',
+  infoContainer: {
+    position: 'absolute',
+    top: '100%',
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 5,
+    marginTop: 5,
+  },
+  infoText: {
+    fontSize: 14,
+    color: '#333',
+    fontWeight: '500',
   },
 });
 

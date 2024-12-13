@@ -4,8 +4,9 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButtons from "@/components/AdminComponents/CustomButtons";
 import ProgressBar from "@/components/AdminComponents/ProgressBar";
-const imgUrl = require("../../assets/images/adminbg6.jpg");
-const imgUrl2 = require("../../assets/images/adminfooter.png");
+import Footer from "@/components/AdminComponents/CustomFooter";
+const imgUrl = require("../../assets/images/adminbg2.jpg");
+const imgUrl2 = require("../../assets/images/adminbg5nobg.png");
 
 const Admin = () => {
   return (
@@ -13,72 +14,61 @@ const Admin = () => {
       <View className="h-[30%]">
         <ImageBackground
           source={imgUrl}
-          className="flex-1 justify-center"
-          resizeMode="cover"
+          className="flex-1 justify-center items-center"
+          
         >
-          {/* <Text className=" text-white text-lg font-bold">
+          <Text className="text-center text-white text-lg font-bold">
             Hello Admin
           </Text>
-          <Text className=" text-white text-lg font-bold mb-24">
-            Welcome!
-          </Text> */}
+    
         </ImageBackground>
       </View>
 
-      <View className="h-[30%] flex-col justify-center mt-4 gap-4">
+      <View className="h-[28%] flex-col justify-center mt-4 gap-4">
 
   <View className="flex flex-row justify-center">
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus"/>
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus" />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus" />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus" />
     </View>
   </View>
   <View className="flex flex-row justify-center mt-3">
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus" />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus"/>
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus"/>
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Create Event"} />
+      <CustomButtons title={"Create Event"} iconName="plus"/>
     </View>
   </View>
 </View>
 
+<View className="flex flex-col justify-between items-center">
+  <Text className="text-white text-center text-2xl font-bold mt-4">
+    Progress Overview
+  </Text>
 
-      <View className="h-=[30%] flex justify-center">
-        <Text className="text-center text-white text-lg font-semibold mb-2 mt-2">
-          Progress Overview
-        </Text>
-        <ProgressBar />
-      </View>
+  <View className="flex-grow flex justify-center mb-10 w-full">
+    <ProgressBar />
+  </View>
+</View>
 
     
-      <View className="h-[30%] border-b">
-        <ImageBackground
-          source={imgUrl2}
-          className="flex-1 justify-center items-center"
-          resizeMode="cover"
-        >
-          <Text className="text-center text-white text-lg font-bold">
-            Hello Admin
-          </Text>
-          <Text className="text-center text-white text-lg font-bold">
-            Welcome!
-          </Text>
-        </ImageBackground>
+      <View className="border-b">
+         <Footer />
       </View>
     </SafeAreaView>
   );
