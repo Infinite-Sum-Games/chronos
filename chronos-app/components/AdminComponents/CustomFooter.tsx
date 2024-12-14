@@ -17,7 +17,7 @@ const Footer = () => {
   <TouchableOpacity className="bg-[#17191b] p-3 rounded-full">
     <Ionicons name="logo-github" size={22} color="#FFFFFF" />
   </TouchableOpacity>
-  <Text className="text-[#4279d2] text-base">https://github.com/IAmRiteshKoushik</Text>
+  <Text className="text-[#4a7fd5] text-base">https://github.com/IAmRiteshKoushik</Text>
 </View>
 
       </View>

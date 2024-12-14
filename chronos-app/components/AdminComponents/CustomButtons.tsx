@@ -12,7 +12,7 @@ interface CustomButtonsProps {
 const CustomButtons: React.FC<CustomButtonsProps> = ({
   title,
   iconName,
-  iconSize = 36,
+  iconSize = 35,
   iconColor = "white",
 }) => {
   return (

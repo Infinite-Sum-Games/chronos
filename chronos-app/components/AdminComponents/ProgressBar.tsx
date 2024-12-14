@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 
-const ProgressBar = ({ start = 0, end = 100, duration = 2000, color = '#3ABEF9' }) => {
+const ProgressBar = ({ start = 0, end = 100, duration = 2000, color = '#3b9c4d' }) => {
   const progress = useRef(new Animated.Value(start)).current;
   const [progressText, setProgressText] = useState(start);
   useEffect(() => {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '100%',
-    height: 25,
+    height: 12,
     backgroundColor: '#E0E0E0',
     borderRadius: 16,
     overflow: 'hidden',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 14,
-    color: '#333',
+    color: 'white',
     fontWeight: '500',
   },
 });
