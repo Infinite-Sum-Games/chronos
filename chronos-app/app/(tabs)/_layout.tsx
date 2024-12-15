@@ -1,7 +1,7 @@
-import { Tabs } from 'expo-router';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { Tabs } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 export default function TabLayout() {
   return (
@@ -9,11 +9,11 @@ export default function TabLayout() {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-        justifyContent:'center', 
-        backgroundColor: 'white',
-        height: 45, 
+          justifyContent: "center",
+          backgroundColor: "white",
+          height: 45,
         },
-        // tabBarActiveTintColor: '#3572EF', 
+        // tabBarActiveTintColor: '#3572EF',
         // tabBarInactiveTintColor: '#FFFFFF',
       }}
     >
@@ -22,7 +22,11 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={24} style={{ color, textAlign: 'center' }} />
+            <FontAwesome
+              name="home"
+              size={24}
+              style={{ color, textAlign: "center" }}
+            />
           ),
         }}
       />
@@ -31,7 +35,11 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="clipboard-clock" size={24} style={{ color, textAlign: 'center' }} />
+            <MaterialCommunityIcons
+              name="clipboard-clock"
+              size={24}
+              style={{ color, textAlign: "center" }}
+            />
           ),
         }}
       />
@@ -40,7 +48,11 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome6 name="user-circle" size={24} style={{ color, textAlign: 'center' }} />
+            <FontAwesome6
+              name="user-circle"
+              size={24}
+              style={{ color, textAlign: "center" }}
+            />
           ),
         }}
       />

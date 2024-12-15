@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Home = () => {
+const permanentSwap = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>permanentSwap</Text>
     </View>
   );
 };
 
-export default Home;
+export default permanentSwap;
