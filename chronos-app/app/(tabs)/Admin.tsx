@@ -6,10 +6,18 @@ import CustomButtons from "@/components/AdminComponents/CustomButtons";
 import ProgressBar from "@/components/AdminComponents/ProgressBar";
 import Footer from "@/components/AdminComponents/CustomFooter";
 import { AntDesign } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 const imgUrl = require("../../assets/images/adminbg2.jpg");
 
 
 const Admin = () => {
+  const router = useRouter();
+  const navigateToEvent = (type: any) => {
+    router.push({
+        pathname: "/events", 
+        params: { type }, 
+    });
+};
   return (
     <SafeAreaView className="flex-1 bg-mybg">
       <View className="h-[30%]">
@@ -38,30 +46,30 @@ const Admin = () => {
 
   <View className="flex flex-row justify-center">
     <View className="flex-1 items-center">
-      <CustomButtons title={"Temporary swap"} iconName="cached"/>
+      <CustomButtons title={"Temporary swap"} iconName="cached" onPress={() => router.push('/(AdminPages)/TemporarySwap')} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Permanent swap"} iconName="repeat" />
+      <CustomButtons title={"Permanent swap"} iconName="swap-horiz" onPress={() => router.push('/(AdminPages)/permanentSwap')} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Exam"} iconName="school" />
+      <CustomButtons title={"Exam"} iconName="school" onPress={() => router.push('/(AdminPages)/exam')} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Assignment"} iconName="assignment-add" />
+      <CustomButtons title={"Assignment"} iconName="assignment-add" onPress={()=>navigateToEvent("Assignment")} />
     </View>
   </View>
   <View className="flex flex-row justify-center mt-3">
     <View className="flex-1 items-center">
-      <CustomButtons title={"Tutorial"} iconName="cast-for-education" />
+      <CustomButtons title={"Tutorial"} iconName="cast-for-education"  onPress={()=>navigateToEvent("Tutorial")} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Quiz"} iconName="quiz"/>
+      <CustomButtons title={"Quiz"} iconName="quiz"  onPress={()=>navigateToEvent("Quiz")} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Evaluation"} iconName="checklist"/>
+      <CustomButtons title={"Evaluation"} iconName="checklist"  onPress={()=>navigateToEvent("Evaluation")} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"OTP"} iconName="vpn-key"/>
+      <CustomButtons title={"OTP"} iconName="vpn-key" onPress={() => router.push('/(AdminPages)/otp')} />
     </View>
   </View>
 </View>

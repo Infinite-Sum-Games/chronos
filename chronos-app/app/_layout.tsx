@@ -7,6 +7,9 @@ const StackLayout = () =>
             <Stack.Screen name="(tabs)"
              options={{
                 headerShown: false,}}></Stack.Screen>
+                <Stack.Screen name="(AdminPages)"
+             options={{
+                headerShown: false,}}></Stack.Screen>
         </Stack>
     )
 }
