@@ -10,7 +10,7 @@ const Footer = () => {
         <View className="absolute bottom-0 right-0 w-1/2 h-full bg-gradient-to-tl from-[#374151] to-transparent opacity-20" />
       </View>
       <View className="items-center relative">
-        <Text className="text-white text-lg font-semibold text-center mb-4">
+        <Text className="text-lg font-bold text-center text-gray-200 mb-4">
           Made  by Infinite Sum Games
         </Text>
         <View className="flex-row items-center space-x-4">

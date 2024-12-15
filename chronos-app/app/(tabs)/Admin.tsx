@@ -20,22 +20,15 @@ const Admin = () => {
   <View
     className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30"
   />
-   <View className="absolute bottom-10 flex-row gap-6">
+
     <View className="justify-center items-center">
       <View className="bg-white rounded-full w-16 h-16 justify-center items-center">
-        <AntDesign name="user" size={30} color="#050C9C" />
+        <AntDesign name="user" size={34} />
       </View>
       <Text className="text-white text-sm mt-2">Admin</Text>
     </View>
-  </View>
-  <View className="absolute top-16 items-center">
-    <Text className="text-center text-white text-2xl font-bold shadow-lg">
-      Welcome
-    </Text>
-    <Text className="text-center text-white text-sm mt-2">
-      Manage your operations
-    </Text>
-  </View>
+
+
  
 </ImageBackground>
 
@@ -45,30 +38,30 @@ const Admin = () => {
 
   <View className="flex flex-row justify-center">
     <View className="flex-1 items-center">
-      <CustomButtons title={"Temporary swap"} iconName="sync"/>
+      <CustomButtons title={"Temporary swap"} iconName="cached"/>
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Permanent swap"} iconName="retweet" />
+      <CustomButtons title={"Permanent swap"} iconName="repeat" />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Exam"} iconName="profile" />
+      <CustomButtons title={"Exam"} iconName="school" />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Assignment"} iconName="form" />
+      <CustomButtons title={"Assignment"} iconName="assignment-add" />
     </View>
   </View>
   <View className="flex flex-row justify-center mt-3">
     <View className="flex-1 items-center">
-      <CustomButtons title={"Tutorial"} iconName="book" />
+      <CustomButtons title={"Tutorial"} iconName="cast-for-education" />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Quiz"} iconName="questioncircleo"/>
+      <CustomButtons title={"Quiz"} iconName="quiz"/>
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Evaluation"} iconName="staro"/>
+      <CustomButtons title={"Evaluation"} iconName="checklist"/>
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"OTP"} iconName="lock"/>
+      <CustomButtons title={"OTP"} iconName="vpn-key"/>
     </View>
   </View>
 </View>

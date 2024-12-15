@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Pressable, Text } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { FontAwesome, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
 
 interface CustomButtonsProps {
   title: string;
@@ -21,7 +22,7 @@ const CustomButtons: React.FC<CustomButtonsProps> = ({
         className="justify-center items-center"
         android_ripple={{ color: "rgba(253, 253, 255, 0.1)", borderless: true }}
       >
-        <AntDesign name={iconName} size={iconSize} color={iconColor} />
+        <MaterialIcons name={iconName} size={iconSize} color={iconColor} />
       </Pressable>
       <Text className="text-white text-center text-sm p-4">{title}</Text>
     </View>
