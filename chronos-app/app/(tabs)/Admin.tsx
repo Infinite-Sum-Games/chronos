@@ -14,7 +14,7 @@ const Admin = () => {
   const router = useRouter();
   const navigateToEvent = (type: any) => {
     router.push({
-        pathname: "/events", 
+        pathname: "/Events", 
         params: { type }, 
     });
 };
@@ -49,10 +49,10 @@ const Admin = () => {
       <CustomButtons title={"Temporary swap"} iconName="cached" onPress={() => router.push('/(AdminPages)/TemporarySwap')} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Permanent swap"} iconName="swap-horiz" onPress={() => router.push('/(AdminPages)/permanentSwap')} />
+      <CustomButtons title={"Permanent swap"} iconName="swap-horiz" onPress={() => router.push('/(AdminPages)/PermanentSwap')} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"Exam"} iconName="school" onPress={() => router.push('/(AdminPages)/exam')} />
+      <CustomButtons title={"Exam"} iconName="school" onPress={() => router.push('/(AdminPages)/Exam')} />
     </View>
     <View className="flex-1 items-center">
       <CustomButtons title={"Assignment"} iconName="assignment-add" onPress={()=>navigateToEvent("Assignment")} />
@@ -69,7 +69,7 @@ const Admin = () => {
       <CustomButtons title={"Evaluation"} iconName="checklist"  onPress={()=>navigateToEvent("Evaluation")} />
     </View>
     <View className="flex-1 items-center">
-      <CustomButtons title={"OTP"} iconName="vpn-key" onPress={() => router.push('/(AdminPages)/otp')} />
+      <CustomButtons title={"OTP"} iconName="vpn-key" onPress={() => router.push('/(AdminPages)/OTP')} />
     </View>
   </View>
 </View>
