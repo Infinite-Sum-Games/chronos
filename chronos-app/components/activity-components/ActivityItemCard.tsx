@@ -22,71 +22,34 @@ interface ActivityItemCardProps {
   date: string;
 }
 
+interface IconMap {
+  [key: string]: string;
+}
+
+const iconMap: IconMap = {
+  Exam: "description",
+  Evaluation: "check-circle",
+  Quiz: "quiz",
+  Assignment: "assignment-turned-in",
+  Tutorial: "school",
+};
+
+// Function to return the correct icon based on activity type
+const getIcon = (type: keyof IconMap) => {
+  return (
+    <View className="bg-background rounded-full">
+      <MaterialIcons
+        name={iconMap[type]}
+        size={20}
+        color="#61FFFF"
+        style={{ padding: 12 }}
+      />
+    </View>
+  );
+};
+
 const ActivityItemCard = (props: ActivityItemCardProps) => {
   const [isModalVisible, setModalVisible] = useState(false);
-
-  // Function to return the correct icon based on activity type
-  const getIcon = (type: string) => {
-    switch (type) {
-      case "Exam":
-        return (
-          <View className="bg-background rounded-full">
-            <MaterialIcons
-              name="description"
-              size={20}
-              color="#61FFFF"
-              style={{ padding: 12 }}
-            />
-          </View>
-        );
-      case "Evaluation":
-        return (
-          <View className="bg-background rounded-full">
-            <MaterialIcons
-              name="check-circle"
-              size={20}
-              color="#61FFFF"
-              style={{ padding: 12 }}
-            />
-          </View>
-        );
-      case "Quiz":
-        return (
-          <View className="bg-background rounded-full">
-            <MaterialIcons
-              name="quiz"
-              size={20}
-              color="#61FFFF"
-              style={{ padding: 12 }}
-            />
-          </View>
-        );
-      case "Assignment":
-        return (
-          <View className="bg-background rounded-full">
-            <MaterialIcons
-              name="assignment-turned-in"
-              size={20}
-              color="#61FFFF"
-              style={{ padding: 12 }}
-            />
-          </View>
-        );
-      case "Tutorial":
-        return (
-          <View className="bg-background rounded-full">
-            <MaterialIcons
-              name="school"
-              size={20}
-              color="#61FFFF"
-              style={{ padding: 12 }}
-            />
-          </View>
-        );
-      default:
-        return null;
-    }
-  };
 
   return (
     <View className="flex flex-col bg-cardBackground rounded-lg mx-4 my-2">
