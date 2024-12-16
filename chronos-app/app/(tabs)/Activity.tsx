@@ -1,3 +1,4 @@
+
 import { View, Text, StatusBar, ScrollView } from "react-native";
 import React, { useEffect } from "react";
 import ActivityTopBar from "@/components/activity-components/ActivityTopBar";
@@ -161,6 +162,7 @@ const Activity = () => {
       </ScrollView>
       <StatusBar barStyle="dark-content" />
     </SafeAreaView>
+
   );
 };
 

@@ -13,6 +13,7 @@ module.exports = {
         cardText: "#EEEEFF",
         badgeBackground: "#0b6b91",
         badgeText: "#E2FFFF",
+        mybg: '#161617',
       },
     },
   },
