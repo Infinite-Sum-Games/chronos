@@ -3,11 +3,21 @@ import React from "react";
 import { useSearchParams } from "expo-router/build/hooks";
 
 const events = () => {
-  const type = useSearchParams();
+  const type = 
+  useSearchParams();
   return (
     <View>
-      <Text>events</Text>
-      <Text>{type}</Text>
+      <Text>
+        events
+
+
+
+      </Text>
+      <Text>{type}
+
+
+
+      </Text>
     </View>
   );
 };
