@@ -9,14 +9,8 @@ const events = () => {
     <View>
       <Text>
         events
-
-
-
       </Text>
       <Text>{type}
-
-
-
       </Text>
     </View>
   );
