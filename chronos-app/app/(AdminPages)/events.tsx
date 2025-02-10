@@ -1,4 +1,4 @@
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
 import { useSearchParams } from "expo-router/build/hooks";
 
@@ -29,28 +29,51 @@ const Events: React.FC = () => {
   };
 
   return (
-    <View>
-      <Text>Event Form - {eventType}</Text>
+    <View className="flex-1 bg-mybg px-6 py-8">
+    
+      <Text className="text-center text-3xl font-bold text-white mb-8">
+        {eventType} Event Form
+      </Text>
 
-      <TextInput
-        placeholder="Title"
-        value={formData.Title}
-        onChangeText={(text) => handleEdit("Title", text)}
-      />
+    
+      <View className="bg-transparent border border-gray-600 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto">
+        <Text className="text-lg font-semibold text-white mb-4">
+          Enter Event Details:
+        </Text>
 
-      <TextInput
-        placeholder="Description"
-        value={formData.description}
-        onChangeText={(text) => handleEdit("description", text)}
-      />
+        <TextInput
+          placeholder="Title"
+          placeholderTextColor="#ccc"
+          value={formData.Title}
+          onChangeText={(text) => handleEdit("Title", text)}
+          className="w-full bg-mybg px-4 py-3 border border-gray-600 rounded-lg text-white mb-4"
+        />
 
-      <TextInput
-        placeholder="Date"
-        value={formData.date}
-        onChangeText={(text) => handleEdit("date", text)}
-      />
+        <TextInput
+          placeholder="Description"
+          placeholderTextColor="#ccc"
+          value={formData.description}
+          onChangeText={(text) => handleEdit("description", text)}
+          className="w-full bg-mybg px-4 py-3 border border-gray-600 rounded-lg text-white mb-4"
+          multiline
+        />
 
-      <Button title="Submit" onPress={handleSubmit} />
+        <TextInput
+          placeholder="Date (YYYY-MM-DD)"
+          placeholderTextColor="#ccc"
+          value={formData.date}
+          onChangeText={(text) => handleEdit("date", text)}
+          className="w-full bg-mybg px-4 py-3 border border-gray-600 rounded-lg text-white mb-6"
+        />
+        <Pressable
+          onPress={handleSubmit}
+          className="w-full bg-blue-600 py-3 rounded-xl shadow-md shadow-blue-500 active:bg-blue-700"
+        >
+          <Text className="text-white text-center font-semibold text-lg">
+            Submit
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
