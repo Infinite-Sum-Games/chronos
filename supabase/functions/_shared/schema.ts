@@ -15,8 +15,8 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-export const students = pgTable("Students", {
-  id: uuid("id").primaryKey(),
+export const students = pgTable("students", {
+  id: varchar("id").primaryKey(),
   rollNo: varchar("roll_no", { length: 20 }).unique().notNull(),
   name: varchar("name", { length: 100 }).notNull(),
   isAdmin: boolean("isAdmin").default(false),
@@ -53,7 +53,7 @@ export const activity = pgTable("Activity", {
   date: date("date").notNull(),
   time: time("time").notNull(),
   actitvityType: activityTypeEnum("activityType").notNull(),
-  courseId: uuid("course_id")
+  courseId: varchar("course_id")
     .notNull()
     .references(() => courses.courseId, { onDelete: "cascade" }),
   description: text("description"),
@@ -70,4 +70,3 @@ export const timetable = pgTable("Timetable", {
     .references(() => courses.courseId),
   roomNo: varchar("room_no", { length: 20 }).notNull(),
 })
-

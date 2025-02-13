@@ -1,9 +1,7 @@
-import { Hono } from "Hono";
+import { Hono } from "hono";
 import { supabase } from "../_shared/client.ts";
 import { db } from "../_shared/db.ts";
 import { students } from "../_shared/schema.ts";
-import { getCookie, setCookie } from "Hono/cookie";
-import { HTTPException } from "hono/http-exception";
 import { z } from "zod";
 
 const app = new Hono();
@@ -25,25 +23,32 @@ const signInSchema = z.object(
 
 app.post("/sign-up", async (c) => {
   try {
-    const body = await c.req.json();
-    const validateData = signUpSchema.parse(body)
+    const validateBody = await signUpSchema.safeParseAsync(c.req.json())
 
-    const { email, password, rollNo, name } = validateData;
+    if (!validateBody.success) {
+      return c.json({ message: "Signup failed", error: validateBody.error.format() }, 400);
+    }
 
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({
+      email: validateBody.data.email,
+      password: validateBody.data.password
+    });
 
     if (error || data?.user?.email) {
       return c.json(
         { message: error?.message || "error while signing up" }, 400);
     }
     const studentData = {
-      id: data.user?.id,
-      rollNo: validateData.rollNo,
-      name: validateData.name,
-      isAdmin: false,
+      id: data.user!.id,
+      rollNo: validateBody.data.rollNo,
+      name: validateBody.data.name,
+      isAdmin: false
     };
 
-    const student = await db.insert(students).values(studentData).returning();
+
+    const student = await db.insert(students)
+      .values(studentData)
+      .returning({ id: students.id, name: students.name, rollNo: students.rollNo });
     return c.json(student);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : "Unknown error";
@@ -51,13 +56,22 @@ app.post("/sign-up", async (c) => {
   }
 });
 
+
 app.post("/sign-in", async (c) => {
   try {
-    const body = await c.req.json();
-    const validateData = signInSchema.parse(body);
+    const validateBody = signInSchema.safeParse(c.req.json());
 
-    const { email } = validateData;
-    const { error } = await supabase.auth.signInWithOtp({ email });
+    if (!validateBody.success) {
+      return c.json({ message: "sign-in failed", error: validateBody.error.format() }, 400);
+    }
+
+    const { data, error } = await supabase.auth.signInWithOtp({
+      email: validateBody.data.email,
+      options: {
+        shouldCreateUser: false,
+        emailRedirectTo: 'https://chronosexample.com/main',
+      },
+    });
 
     if (error) {
       return c.json({ message: error.message }, 400);
@@ -65,8 +79,7 @@ app.post("/sign-in", async (c) => {
 
     return c.json({ message: "Magic link sent to email." }, 200);
   } catch (err) {
-    const errorMessage = err instanceof Error ? err.message : "Unknown error";
-    return c.json({ error: errorMessage }, 400);
+    return c.json({ message: "Failure in signing in" }, 400);
   }
 });
 
@@ -87,33 +100,3 @@ app.get("/auth/google", async (c) => {
   }
   return c.redirect(data.url)
 })
-
-
-
-app.get("/refresh", async (c) => {
-  const refresh_token = getCookie(c, "refresh_token");
-  if (!refresh_token) {
-    throw new HTTPException(403, { message: "No refresh token" });
-  }
-
-  const { data, error } = await supabase.auth.refreshSession({
-    refresh_token,
-  });
-
-  if (error) {
-    console.error("Error while refreshing token", error);
-    throw new HTTPException(403, { message: error.message });
-  }
-
-  if (data?.session) {
-    setCookie(c, "refresh_token", data.session.refresh_token, {
-      ...(data.session.expires_at &&
-        { expires: new Date(data.session.expires_at) }),
-      httpOnly: true,
-      path: "/",
-      secure: true,
-    });
-  }
-
-  return c.json(data.user);
-});
