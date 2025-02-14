@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db:push": "drizzle-kit push",
-    "db:seed": "tsx supabase/seeding/indexSeeding.ts"
+    "db:seed": "tsx supabase/seeding/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,6 @@
     "@vercel/postgres": "^0.10.0",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.2",
-    "drizzle-seed": "^0.3.1",
     "hono": "^4.7.0",
     "postgres": "^3.4.5",
     "uuid": "^11.0.5",
