@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",  // Set to project root to include all files
     "allowImportingTsExtensions": true,
-    "outDir": "dist",
+    "outDir": "./supabase",
     "target": "ESNext",
     "module": "CommonJS",
     "strict": true,
