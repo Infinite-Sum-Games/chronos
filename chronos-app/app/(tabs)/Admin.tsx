@@ -13,7 +13,7 @@ const Admin = () => {
   const router = useRouter();
   const navigateToEvent = (type: any) => {
     router.push({
-      pathname: "/Events",
+      pathname: "/events",
       params: { type },
     });
   };
