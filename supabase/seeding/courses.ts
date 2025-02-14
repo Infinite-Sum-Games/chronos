@@ -9,5 +9,5 @@ export default async function seedCourses(db: any) {
     { courseId: "23CSE214", courseName: "Operating Systems", credits: 4, isElective: false },
     { courseId: "22ADM201", courseName: "Life Skill for Engineers", credits: 1, isElective: false },
   ]);
-  console.log("📖 Courses seeded.");
+  console.log("Courses seeded.");
 }

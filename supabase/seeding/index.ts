@@ -1,14 +1,9 @@
-import { Hono } from "hono";
-import { supabase } from "../functions/_shared/client.ts";
 import { client, db } from "../functions/_shared/db.ts";
-
-
-import { drizzle } from "drizzle-orm/node-postgres";
-import seedStudents from "./students";
-import seedCourses from "./courses";
-import seedSlots from "./slots";
-import seedActivities from "./activities";
-import seedTimetable from "./timetable";
+import seedStudents from "./students.ts";
+import seedCourses from "./courses.ts";
+import seedSlots from "./slots.ts";
+import seedActivities from "./activities.ts";
+import seedTimetable from "./timetable.ts";
 
 
 async function seed() {
