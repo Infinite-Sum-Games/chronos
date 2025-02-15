@@ -6,7 +6,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import GridBackground from "@/components/components/GridBackground"; // Import the Grid Background Component
 import { DatePickerModal } from 'react-native-paper-dates';
 import { en, registerTranslation } from 'react-native-paper-dates';
-
+import { TimePickerModal } from 'react-native-paper-dates';
 registerTranslation('en', en);
 
 type EventType = "Assignment" | "Tutorial" | "Quiz" | "Evaluation";
@@ -19,6 +19,22 @@ interface EventField {
 }
 
 const Events: React.FC = () => {
+ //TIME PICKER
+ const [visible, setVisible] = React.useState(false)
+  const onDismiss = React.useCallback(() => {
+    setVisible(false)
+  }, [setVisible])
+
+  const onConfirmTime = ({ hours, minutes }: { hours: number; minutes: number }) => {
+    setVisible(false);
+    
+    // Format the time as HH:MM:SS
+    const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
+    handleEdit("time", formattedTime);
+  };
+  
+
+
 
   const [date, setDate] = React.useState<Date | undefined>(undefined);
   const [open, setOpen] = React.useState(false);
@@ -111,19 +127,19 @@ const Events: React.FC = () => {
     backgroundColor: 'transparent',
     borderColor: 'gray',  
     borderWidth: 0.5, 
-    paddingVertical: 2,  
+    paddingVertical: 1,  
     paddingHorizontal: 0,  
     borderRadius: 12, 
-    marginVertical: 2,  
+    marginLeft: 'auto',  
   }}
   labelStyle={{
-    fontSize: 16,  
+    fontSize: 14,  
     color: 'white',  
-    fontWeight: 'bold', 
   }}
 >
   Choose
 </Button>
+
 
             <DatePickerModal
               locale="en"
@@ -135,6 +151,8 @@ const Events: React.FC = () => {
             />
           </View>
         </View>
+
+
         <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 mb-6">
           <Ionicons name="time-outline" size={20} color="#ccc" className="mr-2" />
           <TextInput
@@ -144,6 +162,33 @@ const Events: React.FC = () => {
             onChangeText={(text) => handleEdit("time", text)}
             className="flex-1 text-white"
           />
+
+<View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
+<Button onPress={() => setVisible(true)} uppercase={false} mode="outlined"
+  style={{
+    backgroundColor: 'transparent',
+    borderColor: 'gray',  
+    borderWidth: 0.5, 
+    paddingVertical: 1,  
+    paddingHorizontal: 0,  
+    borderRadius: 12, 
+    marginLeft: 'auto',  
+  }}
+  labelStyle={{
+    fontSize: 14,  
+    color: 'white',  
+  }}>
+  Choose
+</Button>
+
+        <TimePickerModal
+          visible={visible}
+          onDismiss={onDismiss}
+          onConfirm={onConfirmTime}
+          hours={12}
+          minutes={14}
+        />
+      </View>
         </View>
         <Pressable
           onPress={handleSubmit}
