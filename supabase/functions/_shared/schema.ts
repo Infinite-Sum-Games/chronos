@@ -1,16 +1,11 @@
 import {
   boolean,
-  check,
   date,
   integer,
   pgEnum,
-  PgTable,
   pgTable,
-  pgTableCreator,
-  primaryKey,
   text,
   time,
-  unique,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";

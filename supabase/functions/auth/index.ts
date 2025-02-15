@@ -1,8 +1,8 @@
 import { Hono } from "hono";
-import { supabase } from "../_shared/client.ts";
-import { db } from "../_shared/db.ts";
-import { students } from "../_shared/schema.ts";
-import { z } from "zod";
+import { supabase } from "../_shared/client";
+// import { db } from "../_shared/db";
+// import { students } from "../_shared/schema";
+// import { z } from "zod";
 
 const app = new Hono();
 

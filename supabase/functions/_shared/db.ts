@@ -1,8 +1,7 @@
-import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
-import "dotenv/config";
+import postgres from "npm:postgres";
+import { drizzle } from "npm:drizzle-orm/postgres-js";
 
-const connectionString = process.env.SUPABASE_DB_URL!;
+const connectionString = Deno.env.get("DATABASE_URL");
 
-export const client = postgres(connectionString, { prepare: false });
-export const db = drizzle(client);
+const client = postgres(connectionString, { prepare: false });
+export const db = drizzle({ client });
