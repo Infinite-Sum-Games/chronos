@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hono/node-server": "^1.13.8",
     "@neondatabase/serverless": "^0.10.4",
     "@supabase/supabase-js": "^2.48.1",
     "@vercel/postgres": "^0.10.0",
