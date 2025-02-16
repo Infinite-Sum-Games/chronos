@@ -40,7 +40,7 @@ CREATE TABLE "students" (
 );
 --> statement-breakpoint
 CREATE TABLE "timetable" (
-	"id" varchar PRIMARY KEY NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
 	"day" varchar(10) NOT NULL,
 	"slot_num" integer NOT NULL,
 	"start_time" time NOT NULL,
