@@ -1,11 +1,11 @@
 {
-  "id": "2366819d-925c-4458-ad5e-b5c4768831b4",
+  "id": "e0e7836c-b4b4-4959-b3a4-ae342d04a710",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.Activity": {
-      "name": "Activity",
+    "public.activity": {
+      "name": "activity",
       "schema": "",
       "columns": {
         "id": {
@@ -48,10 +48,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Activity_course_id_Courses_course_id_fk": {
-          "name": "Activity_course_id_Courses_course_id_fk",
-          "tableFrom": "Activity",
-          "tableTo": "Courses",
+        "activity_course_id_courses_course_id_fk": {
+          "name": "activity_course_id_courses_course_id_fk",
+          "tableFrom": "activity",
+          "tableTo": "courses",
           "columnsFrom": [
             "course_id"
           ],
@@ -59,7 +59,7 @@
             "course_id"
           ],
           "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -68,8 +68,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.Courses": {
-      "name": "Courses",
+    "public.courses": {
+      "name": "courses",
       "schema": "",
       "columns": {
         "course_id": {
@@ -112,13 +112,50 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.Slots": {
-      "name": "Slots",
+    "public.otps": {
+      "name": "otps",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "otp": {
+          "name": "otp",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.slots": {
+      "name": "slots",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -149,10 +186,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Slots_course_id_Courses_course_id_fk": {
-          "name": "Slots_course_id_Courses_course_id_fk",
-          "tableFrom": "Slots",
-          "tableTo": "Courses",
+        "slots_course_id_courses_course_id_fk": {
+          "name": "slots_course_id_courses_course_id_fk",
+          "tableFrom": "slots",
+          "tableTo": "courses",
           "columnsFrom": [
             "course_id"
           ],
@@ -160,7 +197,7 @@
             "course_id"
           ],
           "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -175,7 +212,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -215,13 +252,13 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.Timetable": {
-      "name": "Timetable",
+    "public.timetable": {
+      "name": "timetable",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -264,18 +301,18 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Timetable_course_id_Courses_course_id_fk": {
-          "name": "Timetable_course_id_Courses_course_id_fk",
-          "tableFrom": "Timetable",
-          "tableTo": "Courses",
+        "timetable_course_id_courses_course_id_fk": {
+          "name": "timetable_course_id_courses_course_id_fk",
+          "tableFrom": "timetable",
+          "tableTo": "courses",
           "columnsFrom": [
             "course_id"
           ],
           "columnsTo": [
             "course_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
         }
       },
       "compositePrimaryKeys": {},
