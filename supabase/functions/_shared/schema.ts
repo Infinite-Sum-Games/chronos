@@ -57,7 +57,7 @@ export const activity = pgTable("activity", {
 });
 
 export const timetable = pgTable("timetable", {
-  id: varchar("id").primaryKey(),
+  id: serial("id").primaryKey(),
   day: varchar("day", { length: 10 }).notNull(),
   slotNum: integer("slot_num").notNull(),
   startTime: time("start_time").notNull(),
