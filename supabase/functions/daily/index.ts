@@ -12,11 +12,11 @@ const app = new Hono().basePath(`/${funcName}`);
 app.get("/", async (c: Context) => {
   try {
     const curday = new Date().toLocaleDateString("en-US", { weekday: "long" });
-    const data = await db.select().from(timetable).where(eq(timetable.day, curday));
+    const data = await db.select().from(timetable).where(eq(timetable.day, 'Monday'));
     return c.json(data);
   } catch (error: unknown) {
     console.log(error);
-    return c.json({ message: "An unknown error occurred" }, 500);
+    return c.json({ message: "Internal Server Error" }, 500);
   }
 });
 
