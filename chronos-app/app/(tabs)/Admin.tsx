@@ -41,21 +41,21 @@ const Admin = () => {
             <CustomButtons
               title={"Temporary swap"}
               iconName="cached"
-              onPress={() => router.push("/(AdminPages)/TemporarySwap")}
+              onPress={() => router.push("../(AdminPages)/TemporarySwap")}
             />
           </View>
           <View className="flex-1 items-center">
             <CustomButtons
               title={"Permanent swap"}
               iconName="swap-horiz"
-              onPress={() => router.push("/(AdminPages)/PermanentSwap")}
+              onPress={() => router.push("../(AdminPages)/PermanentSwap")}
             />
           </View>
           <View className="flex-1 items-center">
             <CustomButtons
               title={"Exam"}
               iconName="school"
-              onPress={() => router.push("/(AdminPages)/Exam")}
+              onPress={() => router.push("../(AdminPages)/Exam")}
             />
           </View>
           <View className="flex-1 items-center">
@@ -92,7 +92,7 @@ const Admin = () => {
             <CustomButtons
               title={"OTP"}
               iconName="vpn-key"
-              onPress={() => router.push("/(AdminPages)/OTP")}
+              onPress={() => router.push("../(AdminPages)/OTP")}
             />
           </View>
         </View>
