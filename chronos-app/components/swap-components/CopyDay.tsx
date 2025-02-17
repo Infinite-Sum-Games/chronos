@@ -10,11 +10,11 @@ const dateSchema = z.object({
 });
 
 const CopyDay = () => {
-    const [selectedDay, setSelectedDay] = useState(-1); 
+    const [selectedDay, setSelectedDay] = useState("");
     const [day, setDay] = useState(0);
     const [month, setMonth] = useState(0);
     const [year, setYear] = useState(0);
-    const [error, setError] = useState<string | null>(null); 
+    const [error, setError] = useState<string | null>(null);
 
     function formDate(day: number, month: number, year: number) {
         const date = new Date(year, month - 1, day);
@@ -31,35 +31,32 @@ const CopyDay = () => {
 
     const handleFormSubmit = () => {
         try {
-            
             dateSchema.parse({ day, month, year });
 
-            
-            if (selectedDay === -1) {
+            if (selectedDay === "") {
                 setError("Please select a valid day.");
                 return;
             }
 
-          
             const date = formDate(day, month, year);
             if (date) {
-                setSelectedDay(-1); 
-                setError(null); 
+                setSelectedDay("");
+                setError(null);
             }
         } catch (e) {
             if (e instanceof z.ZodError) {
-                setError(e.errors[0].message); 
+                setError(e.errors[0].message);
             }
         }
     };
 
     return (
-        <View className="flex-1 p-2 bg-background ">
-            <Text className="font-bold text-4xl mx-4 mt-3 text-text">Copy Day</Text>
-            <Text className="text-2xl mt-3 mb-3 mx-4 text-text font-semibold">Date</Text>
+        <View className="flex-1 p-6 bg-[#121212]">
+            <Text className="font-bold text-4xl mt-3 text-[#fafafa]">Copy Day</Text>
+            <Text className="text-2xl mt-3 mb-3 text-[#fafafa] font-semibold">Date</Text>
             <View className="flex-row">
                 <TextInput
-                    className="bg-[#61FFFF] text-[#27282d] p-4 rounded-lg ml-4 mr-2 w-3/12"
+                    className="bg-[#494949] text-[#fafafa] p-5 rounded-lg mr-2 w-3/12"
                     placeholder="DD"
                     keyboardType="numeric"
                     maxLength={2}
@@ -67,7 +64,7 @@ const CopyDay = () => {
                     value={day.toString()}
                 />
                 <TextInput
-                    className="bg-[#61FFFF] text-[#27282d] p-3 rounded-lg mx-2 w-3/12"
+                    className="bg-[#494949] text-[#fafafa] p-5 rounded-lg mx-2 w-3/12"
                     placeholder="MM"
                     keyboardType="numeric"
                     maxLength={2}
@@ -75,7 +72,7 @@ const CopyDay = () => {
                     value={month.toString()}
                 />
                 <TextInput
-                    className="bg-[#61FFFF] text-[#27282d] p-3 rounded-lg mx-2 w-3/12"
+                    className="bg-[#494949] text-[#fafafa] p-5 rounded-lg mx-2 w-3/12"
                     placeholder="YYYY"
                     keyboardType="numeric"
                     maxLength={4}
@@ -84,46 +81,32 @@ const CopyDay = () => {
                 />
             </View>
 
-            <Text className="text-2xl text-text font-semibold my-3 mx-4">Day</Text>
-            <View
-                style={{
-                    borderRadius: 10, 
-                    overflow: 'hidden', 
-                    backgroundColor: '#61FFFF', 
-                    marginHorizontal: 16,
-                    height: 55, 
-                    width: 250,
-                }}
-            >
+            <Text className="text-2xl text-[#fafafa] font-semibold my-3">Day</Text>
+            <View className="mb-4 bg-[#494949] text-[#fafafa] rounded-md">
                 <Picker
                     selectedValue={selectedDay}
                     onValueChange={(itemValue) => setSelectedDay(itemValue)}
-                    style={{
-                        height: 55, 
-                        width: 250, 
-                        padding: 12, 
-                        color: "#27282d"
-                    }}
+                    style={{ color: '#fafafa' }}
                 >
-                    <Picker.Item label="Select a day" value={-1} />
-                    <Picker.Item label="Sunday" value={0} />
-                    <Picker.Item label="Monday" value={1} />
-                    <Picker.Item label="Tuesday" value={2} />
-                    <Picker.Item label="Wednesday" value={3} />
-                    <Picker.Item label="Thursday" value={4} />
-                    <Picker.Item label="Friday" value={5} />
-                    <Picker.Item label="Saturday" value={6} />
+                    <Picker.Item label="Select the day" value="" />
+                    <Picker.Item label="Sunday" value="Sunday" />
+                    <Picker.Item label="Monday" value="Monday" />
+                    <Picker.Item label="Tuesday" value="Tuesday" />
+                    <Picker.Item label="Wednesday" value="Wednesday" />
+                    <Picker.Item label="Thursday" value="Thursday" />
+                    <Picker.Item label="Friday" value="Friday" />
+                    <Picker.Item label="Saturday" value="Saturday" />
                 </Picker>
             </View>
 
             <TouchableOpacity
-                className="bg-[#61FFFF] p-4 rounded-lg mt-6 mx-4"
+                className="bg-[#3fcf8e] p-4 rounded-lg mt-2"
                 onPress={handleFormSubmit}
             >
-                <Text className="text-[#27282d] text-lg text-center">Copy</Text>
+                <Text className="text-[#121212] text-lg text-center font-semibold">Copy</Text>
             </TouchableOpacity>
 
-            {error && <Text className="text-red-500 text-lg mx-4 mt-2">{error}</Text>} 
+            {error && <Text className="text-red-500 text-lg mt-2">{error}</Text>}
         </View>
     );
 };

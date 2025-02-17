@@ -1,21 +1,24 @@
 import * as React from "react";
 import { View, Text, useWindowDimensions, TextInput } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
-import EditSlots from "./EditSlots";
-import CopyDay from "./CopyDay";
+import AddPermanentSlot from "./AddPermanentSlot";
+import DeletePermanentSlot from "./DeletePermanentSlot";
+import SwapPermanentSlot from "./SwapPermanentSlot";
 
 const renderScene = SceneMap({
-  editSlots: EditSlots,
-  copyDay: CopyDay,
+  addSlot: AddPermanentSlot,
+  swapSlot: SwapPermanentSlot,
+  deleteSlot: DeletePermanentSlot,
 });
 
-export default function TemporarySwapTabBar() {
+export default function PermanentSwapTabBar() {
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
 
   const routes = [
-    { key: "editSlots", title: "Edit Slots" },
-    { key: "copyDay", title: "Copy Day" },
+    { key: "addSlot", title: "Add Slot" },
+    { key: "swapSlot", title: "Swap Slot" },
+    { key: "deleteSlot", title: "Delete Slot" },
   ];
 
   return (

@@ -1,11 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
-// import App from "@/components/alternateHomepage/pageComponent";
+import PermanentSwapTabBar from "@/components/swap-components/PermenentSwapTabBar";
 
 const permanentSwap = () => {
   return (
-      // <App />
-      <Text>PS</Text>
+    <View className="flex-1 bg-gray-100">
+      <PermanentSwapTabBar />
+    </View>
   );
 };
 
