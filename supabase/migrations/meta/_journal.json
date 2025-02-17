@@ -5,8 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1739641024146,
-      "tag": "0000_broad_moon_knight",
+      "when": 1739701069446,
+      "tag": "0000_illegal_rocket_raccoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739796701917,
+      "tag": "0001_first_amazoness",
       "breakpoints": true
     }
   ]

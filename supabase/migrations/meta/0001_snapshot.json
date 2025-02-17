@@ -1,6 +1,6 @@
 {
-  "id": "e0e7836c-b4b4-4959-b3a4-ae342d04a710",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "765b7ea8-f151-470d-917a-e3949c4f55e1",
+  "prevId": "e0e7836c-b4b4-4959-b3a4-ae342d04a710",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -165,6 +165,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "day": {
+          "name": "day",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
         "slot_num": {
           "name": "slot_num",
           "type": "integer",
@@ -216,6 +222,18 @@
           "primaryKey": true,
           "notNull": true
         },
+        "provider_id": {
+          "name": "provider_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "provider_type": {
+          "name": "provider_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
         "roll_no": {
           "name": "roll_no",
           "type": "varchar(20)",
@@ -228,8 +246,14 @@
           "primaryKey": false,
           "notNull": true
         },
-        "isAdmin": {
-          "name": "isAdmin",
+        "gmail_id": {
+          "name": "gmail_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_admin": {
+          "name": "is_admin",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
@@ -271,18 +295,6 @@
         "slot_num": {
           "name": "slot_num",
           "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "start_time": {
-          "name": "start_time",
-          "type": "time",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "end_time": {
-          "name": "end_time",
-          "type": "time",
           "primaryKey": false,
           "notNull": true
         },
