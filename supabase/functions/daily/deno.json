@@ -1,6 +1,7 @@
 {
   "imports": {
     "drizzle-orm/": "npm:/drizzle-orm/",
-    "postgres": "npm:/postgres"
+    "postgres": "npm:/postgres",
+    "zod": "npm:zod"
   }
 }
