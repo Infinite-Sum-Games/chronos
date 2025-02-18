@@ -63,7 +63,7 @@ const exam = () => {
       {/* Date Input */}
       <View className="flex-row mt-5 w-full space-x-4">
         <TextInput
-          className="bg-[#494949] text-[#fafafa] p-4 rounded-lg w-3/12 mr-2"
+          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-3/12 mr-2"
           placeholder="Day"
           placeholderTextColor="#fafafa"
           keyboardType="numeric"
@@ -71,7 +71,7 @@ const exam = () => {
           onChangeText={setDay}
         />
         <TextInput
-          className="bg-[#494949] text-[#fafafa] p-4 rounded-lg w-3/12 mr-2"
+          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-3/12 mr-2"
           placeholder="Month"
           placeholderTextColor="#fafafa"
           keyboardType="numeric"
@@ -79,7 +79,7 @@ const exam = () => {
           onChangeText={setMonth}
         />
         <TextInput
-          className="bg-[#494949] text-[#fafafa] p-4 rounded-lg w-3/12"
+          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-3/12"
           placeholder="Year"
           placeholderTextColor="#fafafa"
           keyboardType="numeric"
@@ -91,7 +91,7 @@ const exam = () => {
       {/* Time Input (Hour and Minute) */}
       <View className="flex-row mt-5 w-full">
         <TextInput
-          className="bg-[#494949] text-[#fafafa] p-4 rounded-lg w-5/12 mr-2"
+          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-5/12 mr-2"
           placeholder="Hour"
           placeholderTextColor="#fafafa"
           keyboardType="numeric"
@@ -99,7 +99,7 @@ const exam = () => {
           onChangeText={setHour}
         />
         <TextInput
-          className="bg-[#494949] text-[#fafafa] p-4 rounded-lg w-5/12"
+          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-5/12"
           placeholder="Minute"
           placeholderTextColor="#fafafa"
           keyboardType="numeric"
@@ -111,7 +111,7 @@ const exam = () => {
 
       {/* Course ID Input */}
       <TextInput
-        className="bg-[#494949] text-[#fafafa] p-4 rounded-lg mt-5"
+        className="bg-[#202020] text-[#fafafa] p-4 rounded-lg mt-5"
         placeholder="Course ID"
         placeholderTextColor="#fafafa"
         value={courseId}
@@ -120,7 +120,7 @@ const exam = () => {
 
       {/* Description Input */}
       <TextInput
-        className="bg-[#494949] text-[#fafafa] p-4 rounded-lg mt-5"
+        className="bg-[#202020] text-[#fafafa] p-4 rounded-lg mt-5"
         placeholder="Description"
         placeholderTextColor="#fafafa"
         multiline

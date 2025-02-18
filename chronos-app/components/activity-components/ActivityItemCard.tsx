@@ -52,7 +52,7 @@ const ActivityItemCard = (props: ActivityItemCardProps) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   return (
-    <View className="flex flex-col bg-[#494949] rounded-lg mx-4 my-2">
+    <View className="flex flex-col bg-[#202020] rounded-lg mx-4 my-2">
       <View className="flex flex-row rounded-lg overflow-hidden">
         {/* First part */}
         <View className="flex-1 rounded-tl-lg rounded-bl-lg p-4">

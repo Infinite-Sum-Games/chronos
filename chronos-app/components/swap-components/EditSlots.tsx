@@ -51,7 +51,7 @@ const EditSlots = () => {
       <View className="mb-4">
         <Text className="text-[#fafafa] text-lg mb-2">Temp Slot A - Date</Text>
         <TextInput
-          style={{ color: "#fafafa", backgroundColor: "#494949", padding: 20, borderRadius: 8 }}
+          className="text-[#fafafa] bg-[#202020] p-5 rounded-lg border border-[#2d2d2d]"
           value={tempDateA}
           onChangeText={setTempDateA}
           placeholder="Enter Date for Slot A"
@@ -63,7 +63,7 @@ const EditSlots = () => {
       <View className="mb-4">
         <Text className="text-[#fafafa] text-lg mb-2">Temp Slot A - Slot</Text>
         <TextInput
-          style={{ color: "#fafafa", backgroundColor: "#494949", padding: 20, borderRadius: 8 }}
+          className="text-[#fafafa] bg-[#202020] p-5 rounded-lg border border-[#2d2d2d]"
           value={tempSlotA ? tempSlotA.toString() : ""}
           onChangeText={(value) => setTempSlotA(parseInt(value))}
           placeholder="Enter Slot A"
@@ -76,7 +76,7 @@ const EditSlots = () => {
       <View className="mb-4">
         <Text className="text-[#fafafa] text-lg mb-2">Temp Slot B - Date</Text>
         <TextInput
-          style={{ color: "#fafafa", backgroundColor: "#494949", padding: 20, borderRadius: 8 }}
+          className="text-[#fafafa] bg-[#202020] p-5 rounded-lg border border-[#2d2d2d]"
           value={tempDateB}
           onChangeText={setTempDateB}
           placeholder="Enter Date for Slot B"
@@ -88,7 +88,7 @@ const EditSlots = () => {
       <View className="mb-4">
         <Text className="text-[#fafafa] text-lg mb-2">Temp Slot B - Slot</Text>
         <TextInput
-          style={{ color: "#fafafa", backgroundColor: "#494949", padding: 20, borderRadius: 8 }}
+          className="text-[#fafafa] bg-[#202020] p-5 rounded-lg border border-[#2d2d2d]"
           value={tempSlotB ? tempSlotB.toString() : ""}
           onChangeText={(value) => setTempSlotB(parseInt(value))}
           placeholder="Enter Slot B"

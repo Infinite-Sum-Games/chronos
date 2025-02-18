@@ -47,7 +47,7 @@ const DeletePermanentSlot = () => {
       <Text className="text-[#fafafa] text-4xl font-semibold mb-6">Delete Permanent Slot</Text>
 
       {/* Day Picker */}
-      <View className="mb-4 bg-[#494949] text-[#fafafa] rounded-md">
+      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
         <Picker
           selectedValue={day}
           onValueChange={(itemValue) => setDay(itemValue)}
@@ -66,7 +66,7 @@ const DeletePermanentSlot = () => {
 
       {/* Slot Number Input */}
       <TextInput
-        className="w-full bg-[#494949] text-[#fafafa] p-5 rounded-md mb-4"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
         placeholder="Slot Number"
         placeholderTextColor="#fafafa"
         keyboardType="numeric"

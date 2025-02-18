@@ -27,7 +27,7 @@ export default function TemporarySwapTabBar() {
       renderTabBar={(props) => (
         <TabBar
           {...props}
-          style={{ backgroundColor: "#494949" }}  // Accent color
+          style={{ backgroundColor: "#202020" }}  // Accent color
           indicatorStyle={{ backgroundColor: "#3fcf8e" }}  // Primary color
           labelStyle={{ color: "#fafafa", fontWeight: "bold", fontSize: 16 }}  // Text color
         />

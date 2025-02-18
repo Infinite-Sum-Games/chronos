@@ -56,7 +56,7 @@ const SwapPermanentSlot = () => {
       <Text className="text-[#fafafa] text-4xl font-semibold mb-6">Swap Permanent Slot</Text>
 
       {/* Day Picker for removing */}
-      <View className="mb-4 bg-[#494949] text-[#fafafa] rounded-md">
+      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
         <Picker
           selectedValue={removeOn}
           onValueChange={(itemValue) => setRemoveOn(itemValue)}
@@ -74,7 +74,7 @@ const SwapPermanentSlot = () => {
       </View>
 
       <TextInput
-        className="w-full bg-[#494949] text-[#fafafa] p-5 rounded-md mb-4"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
         placeholder="Remove Slot Number"
         placeholderTextColor="#fafafa"
         keyboardType="numeric"
@@ -83,7 +83,7 @@ const SwapPermanentSlot = () => {
       />
 
       {/* Day Picker for adding */}
-      <View className="mb-4 bg-[#494949] text-[#fafafa] rounded-md">
+      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
         <Picker
           selectedValue={addOn}
           onValueChange={(itemValue) => setAddOn(itemValue)}
@@ -101,7 +101,7 @@ const SwapPermanentSlot = () => {
       </View>
 
       <TextInput
-        className="w-full bg-[#494949] text-[#fafafa] p-5 rounded-md mb-4"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
         placeholder="Add Slot Number"
         placeholderTextColor="#fafafa"
         keyboardType="numeric"

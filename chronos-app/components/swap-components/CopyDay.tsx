@@ -56,7 +56,7 @@ const CopyDay = () => {
             <Text className="text-2xl mt-3 mb-3 text-[#fafafa] font-semibold">Date</Text>
             <View className="flex-row">
                 <TextInput
-                    className="bg-[#494949] text-[#fafafa] p-5 rounded-lg mr-2 w-3/12"
+                    className="bg-[#202020] text-[#fafafa] p-5 rounded-lg mr-2 w-3/12 border border-[#2d2d2d]"
                     placeholder="DD"
                     keyboardType="numeric"
                     maxLength={2}
@@ -64,7 +64,7 @@ const CopyDay = () => {
                     value={day.toString()}
                 />
                 <TextInput
-                    className="bg-[#494949] text-[#fafafa] p-5 rounded-lg mx-2 w-3/12"
+                    className="bg-[#202020] text-[#fafafa] p-5 rounded-lg mx-2 w-3/12 border border-[#2d2d2d]"
                     placeholder="MM"
                     keyboardType="numeric"
                     maxLength={2}
@@ -72,7 +72,7 @@ const CopyDay = () => {
                     value={month.toString()}
                 />
                 <TextInput
-                    className="bg-[#494949] text-[#fafafa] p-5 rounded-lg mx-2 w-3/12"
+                    className="bg-[#202020] text-[#fafafa] p-5 rounded-lg mx-2 w-3/12 border border-[#2d2d2d]"
                     placeholder="YYYY"
                     keyboardType="numeric"
                     maxLength={4}
@@ -82,7 +82,7 @@ const CopyDay = () => {
             </View>
 
             <Text className="text-2xl text-[#fafafa] font-semibold my-3">Day</Text>
-            <View className="mb-4 bg-[#494949] text-[#fafafa] rounded-md">
+            <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
                 <Picker
                     selectedValue={selectedDay}
                     onValueChange={(itemValue) => setSelectedDay(itemValue)}
