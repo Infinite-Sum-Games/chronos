@@ -8,6 +8,13 @@
       "when": 1739701069446,
       "tag": "0000_illegal_rocket_raccoon",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739817247858,
+      "tag": "0001_sweet_gabe_jones",
+      "breakpoints": true
     }
   ]
 }

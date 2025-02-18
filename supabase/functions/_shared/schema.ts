@@ -14,9 +14,12 @@ import {
 
 export const students = pgTable("students", {
   id: serial("id").primaryKey(),
+  providerId: varchar("provider_id"),
+  providerType: varchar("provider_type"),
   rollNo: varchar("roll_no", { length: 20 }).unique().notNull(),
   name: varchar("name", { length: 100 }).notNull(),
-  isAdmin: boolean("isAdmin").default(false),
+  gmailId: varchar("gmail_id").notNull(),
+  isAdmin: boolean("is_admin").default(false),
 });
 
 export const courses = pgTable("courses", {
@@ -30,6 +33,7 @@ export const courses = pgTable("courses", {
 export const slots = pgTable("slots", {
   id: serial("id").primaryKey(),
   date: date("date").notNull(),
+  day: varchar("day", { length: 10 }).notNull(),
   slotNum: integer("slot_num").notNull(),
   courseId: varchar("course_id")
     .notNull()
@@ -60,8 +64,6 @@ export const timetable = pgTable("timetable", {
   id: serial("id").primaryKey(),
   day: varchar("day", { length: 10 }).notNull(),
   slotNum: integer("slot_num").notNull(),
-  startTime: time("start_time").notNull(),
-  endTime: time("end_time").notNull(),
   courseId: varchar("course_id")
     .notNull()
     .references(() => courses.courseId, { onDelete: "cascade", onUpdate: "cascade" }),
