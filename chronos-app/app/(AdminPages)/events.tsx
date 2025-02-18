@@ -33,8 +33,22 @@ const Events: React.FC = () => {
     handleEdit("time", formattedTime);
   };
   
-  
-
+  const [errors, setErrors] = useState({
+    courseId: false,
+    description: false,
+    date: false,
+    time: false,
+  });
+  const validateForm = () => {
+    const newErrors = {
+      courseId: !formData.courseId.trim(),
+      description: !formData.description.trim(),
+      date: !formData.date.trim(),
+      time: !formData.time.trim(),
+    };
+    setErrors(newErrors);
+    return Object.values(newErrors).every((field) => !field);
+  };
 
 
   const [date, setDate] = React.useState<Date | undefined>(undefined);
@@ -75,21 +89,27 @@ const Events: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    console.log("Form data:", formData);
+    if (validateForm()) {
+      console.log("Form data:", formData);
+        } else {
+      console.log("Form is invalid");
+    }
   };
+
 
   return (
     <View className="flex-1 bg-background px-6 py-10 relative">
       <GridBackground />
-      <Text className="text-center text-4xl font-bold text-text mb-14">
+      <Text className="text-center text-4xl font-bold text-text mb-12">
         Add {eventType}
       </Text>
 
-      <View className="bg-transparent border border-gray-600 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto">
+      <View className="bg-accent border border-gray-600 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto">
         <Text className="text-lg font-semibold text-text mb-4">Enter {eventType} Details:</Text>
 
         {/* Course ID Input */}
-        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 mb-4">
+        <View className="flex-col mb-4">
+        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 bg-accent">
           <Ionicons name="book-outline" size={20} color="#ccc" className="mr-2" />
           <TextInput
             placeholder="Course ID"
@@ -98,19 +118,12 @@ const Events: React.FC = () => {
             onChangeText={(text) => handleEdit("courseId", text)}
             className="flex-1 text-white"
           />
+          </View>
+          {errors.courseId && <Text className="text-red-500 text-xs ml-2 mt-1">Course ID is required.</Text>}
         </View>
-        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 mb-4">
-          <Ionicons name="document-text-outline" size={20} color="#ccc" className="mr-2" />
-          <TextInput
-            placeholder="Description"
-            placeholderTextColor="#ccc"
-            value={formData.description}
-            onChangeText={(text) => handleEdit("description", text)}
-            className="flex-1 text-white"
-            multiline
-          />
-        </View>
-        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-2 mb-4">
+        
+        <View className="flex-col mb-4">
+        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-2  bg-accent">
           <Ionicons name="calendar-outline" size={20} color="#ccc" className="mr-2" />
           <TextInput
             placeholder="Date (YYYY-MM-DD)"
@@ -125,7 +138,7 @@ const Events: React.FC = () => {
   uppercase={false}  
   mode="outlined"
   style={{
-    backgroundColor: 'transparent',
+    backgroundColor: '#297050',
     borderColor: 'gray',  
     borderWidth: 0.5, 
     paddingVertical: 1,  
@@ -151,10 +164,12 @@ const Events: React.FC = () => {
               onConfirm={onConfirmSingle} 
             />
           </View>
+          </View>
+          {errors.date && <Text className="text-red-500 text-xs ml-2 mt-1">Date is required.</Text>}
         </View>
 
-
-        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 mb-6">
+        <View className="flex-col mb-4">
+        <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3  bg-accent">
           <Ionicons name="time-outline" size={20} color="#ccc" className="mr-2" />
           <TextInput
             placeholder="Time (HH:MM)"
@@ -167,7 +182,7 @@ const Events: React.FC = () => {
 <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
 <Button onPress={() => setVisible(true)} uppercase={false} mode="outlined"
   style={{
-    backgroundColor: 'transparent',
+    backgroundColor: '#297050',
     borderColor: 'gray',  
     borderWidth: 0.5, 
     paddingVertical: 1,  
@@ -190,10 +205,35 @@ const Events: React.FC = () => {
           minutes={14}
         />
       </View>
+      </View>
+      {errors.time && <Text className="text-red-500 text-xs mt-1 ml-2">Time is required.</Text>}
+
         </View>
+
+
+        <View className="flex-col mb-4">
+  <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-1 bg-accent">
+    <Ionicons name="document-text-outline" size={20} color="#ccc" className="mr-2" />
+    <TextInput
+      placeholder="Description"
+      placeholderTextColor="#ccc"
+      value={formData.description}
+      onChangeText={(text) => handleEdit("description", text.slice(0, 500))}
+      className="flex-1 text-white h-16"
+      multiline
+    />
+    <Text className="text-gray-400 text-xs absolute bottom-2 right-4">
+      {formData.description.length}/500
+    </Text>
+  </View>
+  {errors.description && (
+    <Text className="text-red-500 text-xs mt-1 ml-2">Description is required.</Text>
+  )}
+</View>
+
         <Pressable
           onPress={handleSubmit}
-          className="w-full bg-primary py-3 rounded-xl shadow-md active:bg-blue-700 flex-row items-center justify-center"
+          className="w-full bg-secondary py-3 rounded-xl shadow-md active:bg-blue-700 flex-row items-center justify-center"
         >
           <Ionicons name="checkmark-circle-outline" size={20} color="white" className="mr-2" />
           <Text className="text-text text-center font-semibold text-lg">ADD</Text>
