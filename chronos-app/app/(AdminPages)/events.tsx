@@ -27,11 +27,12 @@ const Events: React.FC = () => {
 
   const onConfirmTime = ({ hours, minutes }: { hours: number; minutes: number }) => {
     setVisible(false);
-    
-    // Format the time as HH:MM:SS
-    const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
+  
+    // Format the time as HH:MM
+    const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
     handleEdit("time", formattedTime);
   };
+  
   
 
 
@@ -78,14 +79,14 @@ const Events: React.FC = () => {
   };
 
   return (
-    <View className="flex-1 bg-mybg px-6 py-10 relative">
+    <View className="flex-1 bg-background px-6 py-10 relative">
       <GridBackground />
-      <Text className="text-center text-4xl font-bold text-white mb-14">
+      <Text className="text-center text-4xl font-bold text-text mb-14">
         Add {eventType}
       </Text>
 
       <View className="bg-transparent border border-gray-600 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto">
-        <Text className="text-lg font-semibold text-white mb-4">Enter {eventType} Details:</Text>
+        <Text className="text-lg font-semibold text-text mb-4">Enter {eventType} Details:</Text>
 
         {/* Course ID Input */}
         <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 mb-4">
@@ -156,7 +157,7 @@ const Events: React.FC = () => {
         <View className="flex-row items-center border border-gray-600 rounded-lg px-4 py-3 mb-6">
           <Ionicons name="time-outline" size={20} color="#ccc" className="mr-2" />
           <TextInput
-            placeholder="Time (HH:MM:SS)"
+            placeholder="Time (HH:MM)"
             placeholderTextColor="#ccc"
             value={formData.time}
             onChangeText={(text) => handleEdit("time", text)}
@@ -192,10 +193,10 @@ const Events: React.FC = () => {
         </View>
         <Pressable
           onPress={handleSubmit}
-          className="w-full bg-blue-600 py-3 rounded-xl shadow-md active:bg-blue-700 flex-row items-center justify-center"
+          className="w-full bg-primary py-3 rounded-xl shadow-md active:bg-blue-700 flex-row items-center justify-center"
         >
           <Ionicons name="checkmark-circle-outline" size={20} color="white" className="mr-2" />
-          <Text className="text-white text-center font-semibold text-lg">ADD</Text>
+          <Text className="text-text text-center font-semibold text-lg">ADD</Text>
         </Pressable>
       </View>
     </View>
