@@ -1,11 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
+import ProfileScreen from "@/components/Profile";
 
 const otp = () => {
   return (
-    <View>
-      <Text>otp</Text>
-    </View>
+      <ProfileScreen />
   );
 };
 

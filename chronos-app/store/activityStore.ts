@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
 interface Activity {
-  type: string;
-  title: string;
-  description: string;
-  course: string;
+  courseId: string;
+  activityType: string;
   date: string;
+  time: string;
+  description: string;
 }
 
 interface ActivityState {
