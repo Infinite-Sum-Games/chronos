@@ -10,6 +10,7 @@ import {
   uuid,
   varchar,
   timestamp,
+  unique,
 } from "drizzle-orm/pg-core";
 
 export const students = pgTable("students", {
@@ -39,7 +40,9 @@ export const slots = pgTable("slots", {
     .notNull()
     .references(() => courses.courseId, { onDelete: "cascade", onUpdate: "cascade" }),
   roomNo: varchar("room_no", { length: 20 }).notNull(),
-});
+}, (t) => [
+  unique().on(t.date, t.day, t.slotNum)
+]);
 
 export const activityTypeEnum = pgEnum("activityType", [
   "EXAM",
@@ -68,7 +71,9 @@ export const timetable = pgTable("timetable", {
     .notNull()
     .references(() => courses.courseId, { onDelete: "cascade", onUpdate: "cascade" }),
   roomNo: varchar("room_no", { length: 20 }).notNull(),
-});
+}, (t) => [
+  unique().on(t.day, t.slotNum)
+]);
 
 export const otps = pgTable("otps", {
   id: serial("id").primaryKey(),
