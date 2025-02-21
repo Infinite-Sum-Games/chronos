@@ -1,32 +1,24 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import DatePickerInput from "@/components/swap-components/DatePickerInput";
+import TimePickerInput from "@/components/swap-components/TimePickerInput";
 
 const exam = () => {
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
-  const [hour, setHour] = useState("");  // Hour input state
-  const [minute, setMinute] = useState("");  // Minute input state
+  const [day, setDay] = useState(new Date())
+  const [time, setTime] = useState(new Date())
   const [courseId, setCourseId] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
 
   // Handle form submission
   const handleFormSubmit = async () => {
-    if (!day || !month || !year || !hour || !minute || !courseId || !description) {
+    if (!day || !time || !courseId || !description) {
       setError("Please fill all fields.");
       return;
     }
-    const selectedDate = new Date(Number(year), Number(month) - 1, Number(day));
-    
-    if (isNaN(selectedDate.getTime())) {
-      setError("Invalid date. Please check the day, month, and year.");
-      return;
-    }
-    const time = `${hour}:${minute}`;
 
     const ExamData = {
-      date: selectedDate.toLocaleDateString(),
+      date: day,
       time: time,
       type: "EXAM",
       courseId: courseId,
@@ -35,21 +27,20 @@ const exam = () => {
 
     try {
       const response = await fetch("", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer <ACCESS-TOKEN-HERE>`,
-          "Refresh": "<REFRESH-TOKEN-HERE>",
-        },
-        body: JSON.stringify(ExamData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer <ACCESS-TOKEN-HERE>`,
+        "Refresh": "<REFRESH-TOKEN-HERE>",
+      },
+      body: JSON.stringify(ExamData),
       });
 
-      const data = await response.json();
-
-      if (data.message === "Activity added successfully") {
-        Alert.alert("Success", `Activity added successfully: ${data.activityId}`);
+      if (!response.ok) {
+      setError("Failed to add activity");
       } else {
-        setError("Failed to add activity");
+      const data = await response.json();
+      Alert.alert("Success", `Activity added successfully: ${data.activityId}`);
       }
     } catch (e) {
       setError("An error occurred while adding the activity.");
@@ -61,57 +52,24 @@ const exam = () => {
       <Text className="font-bold text-4xl mt-3 text-[#fafafa]">Add Exam</Text>
 
       {/* Date Input */}
-      <View className="flex-row mt-5 w-full space-x-4">
-        <TextInput
-          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-3/12 mr-2"
-          placeholder="Day"
-          placeholderTextColor="#fafafa"
-          keyboardType="numeric"
+      <View className="mt-5">
+        <DatePickerInput
           value={day}
-          onChangeText={setDay}
-        />
-        <TextInput
-          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-3/12 mr-2"
-          placeholder="Month"
-          placeholderTextColor="#fafafa"
-          keyboardType="numeric"
-          value={month}
-          onChangeText={setMonth}
-        />
-        <TextInput
-          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-3/12"
-          placeholder="Year"
-          placeholderTextColor="#fafafa"
-          keyboardType="numeric"
-          value={year}
-          onChangeText={setYear}
+          onChange={setDay}
         />
       </View>
 
       {/* Time Input (Hour and Minute) */}
-      <View className="flex-row mt-5 w-full">
-        <TextInput
-          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-5/12 mr-2"
-          placeholder="Hour"
-          placeholderTextColor="#fafafa"
-          keyboardType="numeric"
-          value={hour}
-          onChangeText={setHour}
-        />
-        <TextInput
-          className="bg-[#202020] text-[#fafafa] p-4 rounded-lg w-5/12"
-          placeholder="Minute"
-          placeholderTextColor="#fafafa"
-          keyboardType="numeric"
-          value={minute}
-          onChangeText={setMinute}
+      <View className="mt-5">
+        <TimePickerInput
+          value={time}
+          onChange={setTime}
         />
       </View>
 
-
       {/* Course ID Input */}
       <TextInput
-        className="bg-[#202020] text-[#fafafa] p-4 rounded-lg mt-5"
+        className="bg-[#202020] text-[#fafafa] p-5 rounded-lg mt-5 border border-[#2d2d2d]"
         placeholder="Course ID"
         placeholderTextColor="#fafafa"
         value={courseId}
@@ -120,7 +78,7 @@ const exam = () => {
 
       {/* Description Input */}
       <TextInput
-        className="bg-[#202020] text-[#fafafa] p-4 rounded-lg mt-5"
+        className="bg-[#202020] text-[#fafafa] p-5 rounded-lg mt-5 border border-[#2d2d2d]"
         placeholder="Description"
         placeholderTextColor="#fafafa"
         multiline

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import DatePickerInput from "./DatePickerInput";
 
 const EditSlots = () => {
   // State for input fields
-  const [tempDateA, setTempDateA] = useState<string>("");
+  const [tempDateA, setTempDateA] = useState(new Date());
   const [tempSlotA, setTempSlotA] = useState<number>(0);
-  const [tempDateB, setTempDateB] = useState<string>("");
+  const [tempDateB, setTempDateB] = useState(new Date());
   const [tempSlotB, setTempSlotB] = useState<number>(0);
 
   const swapSlots = async () => {
@@ -50,13 +51,7 @@ const EditSlots = () => {
       {/* Temp Slot A - Date Input */}
       <View className="mb-4">
         <Text className="text-[#fafafa] text-lg mb-2">Temp Slot A - Date</Text>
-        <TextInput
-          className="text-[#fafafa] bg-[#202020] p-5 rounded-lg border border-[#2d2d2d]"
-          value={tempDateA}
-          onChangeText={setTempDateA}
-          placeholder="Enter Date for Slot A"
-          placeholderTextColor="#fafafa"
-        />
+        <DatePickerInput value={tempDateA} onChange={setTempDateA} />
       </View>
 
       {/* Temp Slot A - Slot Input */}
@@ -75,13 +70,7 @@ const EditSlots = () => {
       {/* Temp Slot B - Date Input */}
       <View className="mb-4">
         <Text className="text-[#fafafa] text-lg mb-2">Temp Slot B - Date</Text>
-        <TextInput
-          className="text-[#fafafa] bg-[#202020] p-5 rounded-lg border border-[#2d2d2d]"
-          value={tempDateB}
-          onChangeText={setTempDateB}
-          placeholder="Enter Date for Slot B"
-          placeholderTextColor="#fafafa"
-        />
+        <DatePickerInput value={tempDateB} onChange={setTempDateB} />
       </View>
 
       {/* Temp Slot B - Slot Input */}
