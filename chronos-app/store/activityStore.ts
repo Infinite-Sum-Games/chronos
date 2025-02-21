@@ -6,6 +6,7 @@ interface Activity {
   date: string;
   time: string;
   description: string;
+  courseName: string;
 }
 
 interface ActivityState {

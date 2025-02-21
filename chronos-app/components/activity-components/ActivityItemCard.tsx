@@ -20,6 +20,7 @@ interface ActivityItemCardProps {
   date: string;
   time: string;
   description: string;
+  courseName: string;
 }
 
 interface IconMap {

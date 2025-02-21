@@ -12,17 +12,12 @@ interface Activity {
   date: string;
   time: string;
   description: string;
+  courseName: string;
 }
 
 // Helper function to group activities by date
 const groupActivitiesByDate = (
-  activities: {
-    courseId: string;
-    activityType: string;
-    date: string;
-    time: string;
-    description: string;
-  }[]
+  activities: Activity[]
 ): { [key: string]: Activity[] } => {
   return activities.reduce(
     (groups: { [key: string]: Activity[] }, activity) => {
@@ -63,6 +58,7 @@ const Activity = () => {
         date: "2022-07-01",
         time: "12:00 PM",
         description: "Complete Assignment 1",
+        courseName: "Data Structures",
       },
       {
         courseId: "23CCE404",
@@ -70,6 +66,7 @@ const Activity = () => {
         date: "2022-07-01",
         time: "2:00 PM",
         description: "Complete Exam 1",
+        courseName: "Computer Networks",
       },
       {
         courseId: "23CSE204",
@@ -77,6 +74,7 @@ const Activity = () => {
         date: "2022-07-02",
         time: "10:00 AM",
         description: "Complete Quiz 1",
+        courseName: "Algorithms",
       },
       {
         courseId: "19ECE201",
@@ -84,6 +82,7 @@ const Activity = () => {
         date: "2022-07-03",
         time: "9:00 AM",
         description: "Complete Evaluation 1",
+        courseName: "Digital Signal Processing",
       },
       {
         courseId: "23CSE202",
@@ -91,6 +90,7 @@ const Activity = () => {
         date: "2022-07-03",
         time: "2:00 PM",
         description: "Complete Tutorial 1",
+        courseName: "Operating Systems",
       }
     ];
 
@@ -116,6 +116,7 @@ const Activity = () => {
                   courseId={activity.courseId}
                   date={activity.date}
                   time={activity.time}
+                  courseName={activity.courseName}
                 />
               ))}
             </View>
