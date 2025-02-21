@@ -56,7 +56,7 @@ const SwapPermanentSlot = () => {
       <Text className="text-[#fafafa] text-4xl font-semibold mb-6">Swap Permanent Slot</Text>
 
       {/* Day Picker for removing */}
-      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
+      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-lg border border-[#2d2d2d]">
         <Picker
           selectedValue={removeOn}
           onValueChange={(itemValue) => setRemoveOn(itemValue)}
@@ -74,7 +74,7 @@ const SwapPermanentSlot = () => {
       </View>
 
       <TextInput
-        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-lg mb-4 border border-[#2d2d2d]"
         placeholder="Remove Slot Number"
         placeholderTextColor="#fafafa"
         keyboardType="numeric"
@@ -83,7 +83,7 @@ const SwapPermanentSlot = () => {
       />
 
       {/* Day Picker for adding */}
-      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
+      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-lg border border-[#2d2d2d]">
         <Picker
           selectedValue={addOn}
           onValueChange={(itemValue) => setAddOn(itemValue)}
@@ -101,7 +101,7 @@ const SwapPermanentSlot = () => {
       </View>
 
       <TextInput
-        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-lg mb-4 border border-[#2d2d2d]"
         placeholder="Add Slot Number"
         placeholderTextColor="#fafafa"
         keyboardType="numeric"
@@ -110,7 +110,7 @@ const SwapPermanentSlot = () => {
       />
 
       <TouchableOpacity
-        className="bg-[#3fcf8e] p-4 rounded-md w-full active:opacity-80"
+        className="bg-[#3fcf8e] p-4 rounded-lg w-full active:opacity-80"
         onPress={handleSwap}
       >
         <Text className="text-center text-[#121212] font-semibold">Swap Slot</Text>

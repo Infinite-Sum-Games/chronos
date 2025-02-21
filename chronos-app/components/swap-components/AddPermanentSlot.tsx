@@ -49,7 +49,7 @@ const AddPermanentSlot = () => {
       <Text className="text-[#fafafa] text-4xl font-semibold mb-6">Add Permanent Slot</Text>
 
       {/* Day Picker */}
-      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-md border border-[#2d2d2d]">
+      <View className="mb-4 bg-[#202020] text-[#fafafa] rounded-lg border border-[#2d2d2d]">
         <Picker
           selectedValue={day}
           onValueChange={(itemValue) => setDay(itemValue)}
@@ -68,7 +68,7 @@ const AddPermanentSlot = () => {
 
       {/* Slot Number Input */}
       <TextInput
-        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-lg mb-4 border border-[#2d2d2d]"
         placeholder="Slot Number"
         placeholderTextColor="#fafafa"
         keyboardType="numeric"
@@ -78,7 +78,7 @@ const AddPermanentSlot = () => {
 
       {/* Course ID Input */}
       <TextInput
-        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-md mb-4 border border-[#2d2d2d]"
+        className="w-full bg-[#202020] text-[#fafafa] p-5 rounded-lg mb-4 border border-[#2d2d2d]"
         placeholder="Course ID"
         placeholderTextColor="#fafafa"
         value={courseId}
@@ -86,7 +86,7 @@ const AddPermanentSlot = () => {
       />
 
       <TouchableOpacity
-        className="bg-[#3fcf8e] p-4 rounded-md w-full active:opacity-80"
+        className="bg-[#3fcf8e] p-4 rounded-lg w-full active:opacity-80"
         onPress={handleSubmit}
       >
         <Text className="text-center text-[#121212] font-semibold">Add Slot</Text>
