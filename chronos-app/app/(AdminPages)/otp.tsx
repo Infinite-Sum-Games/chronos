@@ -10,6 +10,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function OTPScreen() {
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState(0);
+  const [tag, setTag] = useState<string[]>([]);
   const [error, setError] = useState("");
 
   const handleGetOTP = async () => {
@@ -32,6 +33,7 @@ export default function OTPScreen() {
 
       const data = await response.json();
       setOtp(data.otp);
+      setTag(data.tag);
     } catch (err) {
       setError('Failed to get OTP. Please try again.');
     } finally {
@@ -50,9 +52,16 @@ export default function OTPScreen() {
       {otp ? (
         <View className="w-full items-center mb-10">
           <Text className="text-white text-xl mb-4">Your OTP</Text>
-          <View className="flex-row justify-center gap-2">
+          <View className='flex-row w-full mb-5 mt-5 justify-evenly'>
+            {tag.map((item, index) => (
+              <View key={index} className="rounded-lg  ">
+                <Text className="text-[#3fcf8e] text-5xl font-bold">{item}</Text>
+              </View>
+            ))}
+          </View>
+          <View className="flex-row justify-center gap-5">
             {otp.toString().split('').map((digit, index) => (
-              <View key={index} className="w-12 h-15 bg-[#202020] rounded-lg justify-center items-center border border-[#2d2d2d]">
+              <View key={index} className="w-16 h-16 bg-[#202020] rounded-lg justify-center items-center border border-[#2d2d2d]">
                 <Text className="text-[#3fcf8e] text-2xl font-bold">{digit}</Text>
               </View>
             ))}
