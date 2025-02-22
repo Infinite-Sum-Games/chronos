@@ -1,4 +1,4 @@
-import { and, eq, or } from "https://esm.sh/drizzle-orm@0.30.10";
+import { and, eq, or } from "npm:drizzle-orm";
 import { db } from "../_shared/db.ts";
 import { timetable, slots } from "../_shared/schema.ts";
 import { z } from "npm:zod";
@@ -68,22 +68,22 @@ app.post("/swap", async (c: Context) => {
       return c.json({ message: "Could not find course IDs for the given slots." }, 400);
     }
 
-    await db.transaction(async (trx) => {
+    await db.transaction(async (tx) => {
       // Perform the swap in timetable
-      await trx.update(timetable)
+      await tx.update(timetable)
         .set({ courseId: add_courseId })
         .where(and(eq(timetable.day, remove_on), eq(timetable.slotNum, remove_slot)));
 
-      await trx.update(timetable)
+      await tx.update(timetable)
         .set({ courseId: remove_courseId })
         .where(and(eq(timetable.day, add_on), eq(timetable.slotNum, add_slot)));
 
       // Perform swap in slots
-      await trx.update(slots)
+      await tx.update(slots)
         .set({ courseId: add_courseId })
         .where(and(eq(slots.day, remove_on), eq(slots.slotNum, remove_slot)));
 
-      await trx.update(slots)
+      await tx.update(slots)
         .set({ courseId: remove_courseId })
         .where(and(eq(slots.day, add_on), eq(slots.slotNum, add_slot)));
     });
@@ -94,7 +94,7 @@ app.post("/swap", async (c: Context) => {
         { day: remove_on, slot: remove_slot, new_courseId: add_courseId },
         { day: add_on, slot: add_slot, new_courseId: remove_courseId },
       ],
-    });
+    }, 200);
 
   } catch (error) {
     console.error("Swap Error:", error);
@@ -110,8 +110,8 @@ app.post("/add", async (c: Context) => {
       return c.json({ message: "Invalid Input" }, 400);
     }
 
-    await db.transaction(async (trx) => {
-      await trx.insert(timetable).values({
+    await db.transaction(async (tx) => {
+      await tx.insert(timetable).values({
         day: validBody.data.day,
         slotNum: validBody.data.slot,
         courseId: validBody.data.courseId,
@@ -125,12 +125,12 @@ app.post("/add", async (c: Context) => {
           }
         })
 
-      const dates = await trx.select({
+      const dates = await tx.select({
         date: slots.date,
       }).from(slots).where(eq(slots.day, validBody.data.day));
 
       for (const date of dates) {
-        await trx.insert(slots).values({
+        await tx.insert(slots).values({
           date: date.date,
           day: validBody.data.day,
           slotNum: validBody.data.slot,
@@ -152,7 +152,7 @@ app.post("/add", async (c: Context) => {
       "day": validBody.data.day,
       "slot": validBody.data.slot,
       "courseId": validBody.data.courseId
-    })
+    }, 200)
   } catch (error) {
     console.log(error)
     return c.json({ message: "Internal Server Error" }, 500)
@@ -167,15 +167,15 @@ app.delete("/", async (c: Context) => {
       return c.json({ message: "Invalid Input" }, 400);
     }
 
-    await db.transaction(async (trx) => {
-      await trx.delete(timetable).where(
+    await db.transaction(async (tx) => {
+      await tx.delete(timetable).where(
         and(
           eq(timetable.day, validBody.data.day),
           eq(timetable.slotNum, validBody.data.slot)
         )
       );
 
-      await trx.delete(slots).where(
+      await tx.delete(slots).where(
         and(
           eq(slots.day, validBody.data.day),
           eq(slots.slotNum, validBody.data.slot)
@@ -184,7 +184,7 @@ app.delete("/", async (c: Context) => {
     });
     return c.json({
       "message": `Deleted slot ${validBody.data.slot} from ${validBody.data.day}`,
-    })
+    }, 200)
 
   } catch (error) {
     console.log(error);

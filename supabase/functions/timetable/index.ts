@@ -1,4 +1,4 @@
-import { eq, and } from "https://esm.sh/drizzle-orm@0.30.10";
+import { eq, and } from "npm:drizzle-orm";
 import { db } from "../_shared/db.ts";
 import { timetable, slots } from "../_shared/schema.ts";
 import { z } from "npm:zod";
@@ -113,16 +113,16 @@ app.post("/add", async (c: Context) => {
     }
 
     // Insert into timetable and slots tables
-    await db.transaction(async (trx) => {
+    await db.transaction(async (tx) => {
       await Promise.all([
-        trx.insert(timetable)
+        tx.insert(timetable)
           .values(timetableValues)
           .onConflictDoNothing(), // Skip duplicates
-        trx.insert(slots).values(slotsValues),
+        tx.insert(slots).values(slotsValues),
       ]);
     });
 
-    return c.json({ message: "Timetable and Slots inserted successfully." });
+    return c.json({ message: "Timetable and Slots inserted successfully." }, 200);
 
   } catch (error) {
     console.log("Error:", error);
@@ -138,8 +138,8 @@ app.post("/edit", async (c: Context) => {
       return c.json({ message: "Invalid Input" }, 400);
     }
 
-    await db.transaction(async (trx) => {
-      await trx.update(timetable).set({
+    await db.transaction(async (tx) => {
+      await tx.update(timetable).set({
         day: validBody.data.day,
         slotNum: validBody.data.slotNo,
         courseId: validBody.data.courseId,
@@ -147,7 +147,7 @@ app.post("/edit", async (c: Context) => {
       })
         .where(and(eq(timetable.day, validBody.data.day), eq(timetable.slotNum, validBody.data.slotNo)));
 
-      await trx.update(slots).set({
+      await tx.update(slots).set({
         day: validBody.data.day,
         slotNum: validBody.data.slotNo,
         courseId: validBody.data.courseId,
@@ -155,7 +155,7 @@ app.post("/edit", async (c: Context) => {
       })
         .where(and(eq(slots.day, validBody.data.day), eq(slots.slotNum, validBody.data.slotNo)));
     })
-    return c.json({ message: "The Timetable has been updated" });
+    return c.json({ message: "The Timetable has been updated" }, 200);
 
   } catch (error) {
     console.error("Swap Error:", error);
