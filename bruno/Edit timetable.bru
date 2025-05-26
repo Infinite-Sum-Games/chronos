@@ -1,0 +1,20 @@
+meta {
+  name: Edit timetable
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://127.0.0.1:54321/functions/v1/timetable/edit
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "day": "Monday",
+    "slotNo": 1,
+    "courseId": "23CSE213",
+    "roomNo": "A101"
+  }
+}

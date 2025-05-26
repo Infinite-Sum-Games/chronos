@@ -1,0 +1,21 @@
+meta {
+  name: swap slot
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://127.0.0.1:54321/functions/v1/slot/swap
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "remove_on": "Monday",
+    "remove_slot": 1,
+    "add_on": "Tuesday",
+    "add_slot": 2
+  }
+  
+}

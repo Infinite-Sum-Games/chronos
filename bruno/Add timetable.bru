@@ -1,0 +1,51 @@
+meta {
+  name: Add timetable
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://127.0.0.1:54321/functions/v1/timetable/add
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "startDate": "2025-02-17",
+    "numberOfDays": 90,
+    "days": {
+      "Monday": [
+        { "courseId": "23CSE211", "courseName": "Data Structures", "slotNo": 1, "roomNo": "B101" },
+        { "courseId": "23CSE213", "courseName": "Algorithms", "slotNo": 2, "roomNo": "B102" },
+        { "courseId": "23MAT216", "courseName": "Linear Algebra", "slotNo": 3, "roomNo": "B103" },
+        { "courseId": "23CSE212", "courseName": "Operating Systems", "slotNo": 4, "roomNo": "B104" }
+      ],
+      "Tuesday": [
+        { "courseId": "23CSE214", "courseName": "Computer Networks", "slotNo": 1, "roomNo": "C201" },
+        { "courseId": "22ADM201", "courseName": "Management Studies", "slotNo": 2, "roomNo": "C202" },
+        { "courseId": "23CSE211", "courseName": "Data Structures", "slotNo": 3, "roomNo": "C203" },
+        { "courseId": "23CSE213", "courseName": "Algorithms", "slotNo": 4, "roomNo": "C204" }
+      ],
+      "Wednesday": [
+        { "courseId": "23MAT216", "courseName": "Linear Algebra", "slotNo": 1, "roomNo": "D301" },
+        { "courseId": "23CSE212", "courseName": "Operating Systems", "slotNo": 2, "roomNo": "D302" },
+        { "courseId": "23CSE214", "courseName": "Computer Networks", "slotNo": 3, "roomNo": "D303" },
+        { "courseId": "22ADM201", "courseName": "Management Studies", "slotNo": 4, "roomNo": "D304" }
+      ],
+      "Thursday": [
+        { "courseId": "23CSE211", "courseName": "Data Structures", "slotNo": 1, "roomNo": "E401" },
+        { "courseId": "23CSE213", "courseName": "Algorithms", "slotNo": 2, "roomNo": "E402" },
+        { "courseId": "23MAT216", "courseName": "Linear Algebra", "slotNo": 3, "roomNo": "E403" },
+        { "courseId": "23CSE212", "courseName": "Operating Systems", "slotNo": 4, "roomNo": "E404" }
+      ],
+      "Friday": [
+        { "courseId": "23CSE214", "courseName": "Computer Networks", "slotNo": 1, "roomNo": "F501" },
+        { "courseId": "22ADM201", "courseName": "Management Studies", "slotNo": 2, "roomNo": "F502" },
+        { "courseId": "23CSE211", "courseName": "Data Structures", "slotNo": 3, "roomNo": "F503" },
+        { "courseId": "23CSE213", "courseName": "Algorithms", "slotNo": 4, "roomNo": "F504" }
+      ]
+    }
+  }
+  
+}

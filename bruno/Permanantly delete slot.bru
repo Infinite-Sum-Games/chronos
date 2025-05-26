@@ -1,0 +1,18 @@
+meta {
+  name: Permanantly delete slot
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://127.0.0.1:54321/functions/v1/slot
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "day": "Wednesday",
+    "slot": 7
+  }
+}
