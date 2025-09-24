@@ -1,0 +1,20 @@
+meta {
+  name: Permenantly add slot
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://127.0.0.1:54321/functions/v1/slot/add
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "day": "Wednesday",
+      "slot": 7,
+      "courseId": "23CSE214",
+      "roomno": "A111"
+  }
+}

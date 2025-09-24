@@ -1,0 +1,2 @@
+ALTER TABLE "slots" ADD CONSTRAINT "slots_date_day_slot_num_unique" UNIQUE("date","day","slot_num");--> statement-breakpoint
+ALTER TABLE "timetable" ADD CONSTRAINT "timetable_day_slot_num_unique" UNIQUE("day","slot_num");

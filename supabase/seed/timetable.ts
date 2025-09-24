@@ -8,12 +8,12 @@ export default async function seedTimetable(db: any) {
     { day: "Thursday", slotNum: 1, courseId: "23MAT216", roomNo: "B201" },
     { day: "Friday", slotNum: 2, courseId: "22ADM201", roomNo: "C104" },
     { day: "Saturday", slotNum: 3, courseId: "23CSE212", roomNo: "A101" },
-    { day: "Monday", slotNum: 1, courseId: "23CSE214", roomNo: "A103" },
-    { day: "Tuesday", slotNum: 2, courseId: "23CSE211", roomNo: "A101" },
-    { day: "Wednesday", slotNum: 3, courseId: "23MAT216", roomNo: "B201" },
-    { day: "Thursday", slotNum: 1, courseId: "23CSE213", roomNo: "B303" },
-    { day: "Friday", slotNum: 2, courseId: "22ADM201", roomNo: "C104" },
-    { day: "Saturday", slotNum: 3, courseId: "23CSE212", roomNo: "A101" },
+    { day: "Monday", slotNum: 4, courseId: "23CSE214", roomNo: "A103" },
+    { day: "Tuesday", slotNum: 5, courseId: "23CSE211", roomNo: "A101" },
+    { day: "Wednesday", slotNum: 6, courseId: "23MAT216", roomNo: "B201" },
+    { day: "Thursday", slotNum: 7, courseId: "23CSE213", roomNo: "B303" },
+    { day: "Friday", slotNum: 8, courseId: "22ADM201", roomNo: "C104" },
+    { day: "Saturday", slotNum: 9, courseId: "23CSE212", roomNo: "A101" },
   ]);
   console.log("Timetable seeded.");
 }
