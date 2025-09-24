@@ -13,7 +13,7 @@ const Admin = () => {
   const router = useRouter();
   const navigateToEvent = (type: any) => {
     router.push({
-      pathname: "/Events",
+      pathname: "/events",
       params: { type },
     });
   };
@@ -92,7 +92,7 @@ const Admin = () => {
             <CustomButtons
               title={"OTP"}
               iconName="vpn-key"
-              onPress={() => router.push("/(AdminPages)/OTP")}
+              onPress={() => router.push("/(AdminPages)/Otp")}
             />
           </View>
         </View>

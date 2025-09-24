@@ -7,13 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#27282d",
-        text: "#DAD2DA",
-        cardBackground: "#2b303c",
-        cardText: "#EEEEFF",
-        badgeBackground: "#0b6b91",
-        badgeText: "#E2FFFF",
-        mybg: '#161617',
+        'mybg': '#161617',
+        'text': '#fafafa',
+        'background': '#121212',
+        'primary': '#3fcf8e',
+        'secondary': '#297050',
+        'accent': '#202020',
+        'border': '#2d2d2d',
       },
     },
   },
